@@ -13,7 +13,7 @@ v0 = 2.1e-3 # in eqs
 w = 2e-4 # synaptic weight
 time = 60 # the time for which the model is run, in milliseconds
 time_step = 0.1 # the time step for numerical integration, in milliseconds
-prob = 0 #connection probability
+prob = 0.4 #connection probability
 
 #set up a 1000 neuron model
 start_scope()
@@ -72,12 +72,12 @@ fig, ax = plt.subplots(figsize=(25,15), nrows=2, ncols=1, sharex=False,)
 fig.suptitle('Number of neurons= '+str(N)+', connection probability= '+str(prob)+
              ', time window for averaging= '+str(T)+' ms', size=20)
 
-ax[0].plot(spikem.t[0:600]/ms, spikem.i[0:600], '.k')
+ax[0].plot(spikem.t[0:400]/ms, spikem.i[0:400], '.k')
 ax[0].set_xlabel('Time (ms)', size = 16)
 ax[0].set_ylabel('Neuron index', size = 16)
 
 ax[1].set_xlabel('Time (ms)', size = 16)
-ax[1].set_ylabel('Firing rate (spikes/ms)', size = 16) 
+ax[1].set_ylabel('Firing rate (spikes/sec)', size = 16) 
 #for i in range(N):
 #    ax[1].plot(np.arange(0,ncols,1)*time_step, rate_array[i,:], color='grey', linestyle='-')
 ax[1].plot(np.arange(0,ncols,1)*time_step, total_rate, '-k')
