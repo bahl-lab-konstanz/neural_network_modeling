@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Sep 13 07:21:03 2021
+Created on Fri Dec  3 17:25:17 2021
 
 @author: kunjal
 """
+
 #Also check how changing the I, changing tau_n and changing w alter the final activity
-#level of the integrator wrt time
+#level of the nonlinear neuron wrt time
 
 import numpy as np
-from scipy.integrate import odeint
+# from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 
 #time and initial condition

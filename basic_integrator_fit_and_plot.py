@@ -17,29 +17,34 @@ import matplotlib.pyplot as plt
 y0 = [0]
 w = 0.8
 tau_n = 0.01
-I = 1
+I = 0.4
 t = np.arange(0, 3, 0.001)
 
 #function for curvefit
 def func_onset(x, A, b, C):
-    return A*(1-np.exp(-b*x)) + C
+    return A*(1-np.exp(-b*x)) + C # 
  
 def firing_rate_eq(y, t): return ((-y + w*y + I )/ tau_n)
 y = odeint(firing_rate_eq, y0, t)
 y_array = np.array(y).flatten()
 
-popt, pcov = curve_fit(func_onset,t,y_array)
-print(popt)
-print('std dev of A =', np.sqrt(pcov[1,1]))
+#popt, pcov = curve_fit(func_onset,t,y_array)
+#print(popt)
+#print('std dev of A =', np.sqrt(pcov[1,1]))
 
 #add a way to reject fits with std > 0.5 for 
 
-tau_int_fitted = (1/popt[1])
-tau_int_analytical = tau_n/(1-w)
+#tau_int_fitted = (1/popt[1])
+#tau_int_analytical = tau_n/(1-w)
 
-print('fitted value =', tau_int_fitted)
-print('analytical value = ', tau_int_analytical)
+#print('fitted value of time constant =', tau_int_fitted)
+#print('analytical value of time constant = ', tau_int_analytical)
 
-fig = plt.figure()
-plt.plot(t,y_array, t, func_onset(t, popt[0], popt[1], popt[2]))
+fig = plt.figure(dpi=200)
+plt.plot(t,y_array, color='blue', ) 
+plt.xlabel('Time') 
+plt.ylabel('Firing rate')
+
+#plt.plot(t, func_onset(t, popt[0], popt[1], popt[2]), color='orange', label='fitted curve')
+#plt.legend()
 
